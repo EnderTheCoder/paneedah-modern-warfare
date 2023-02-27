@@ -17347,6 +17347,7 @@ public class Attachments {
                 .withCreativeTab(ModernWarfareMod.AttachmentsTab).withModel(new com.paneedah.mw.models.M1928Grip(), "m1a1thompson.png")
                 .withApply((a, i) -> {
                     i.setRecoil(i.getWeapon().getRecoil() * 0.6f);
+                    i.setReloadTime(i.getWeapon().getReloadTime() * 0.6f);
                 }).withFirstPersonModelPositioning((model, itemStack) -> {
                     if (model instanceof com.paneedah.mw.models.M1928Grip) {
                         GL11.glTranslatef(0.7F, -1.2F, 0.5F);

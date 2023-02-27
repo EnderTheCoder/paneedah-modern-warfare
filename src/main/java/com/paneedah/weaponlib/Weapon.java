@@ -72,7 +72,7 @@ AttachmentContainer, Reloadable, Inspectable, Modifiable, Updatable, IModernCraf
         List<String> textureNames = new ArrayList<>();
         int ammoCapacity = 0;
         float recoil = 1.0F;
-
+        float reloadTime = 1.0F;
         private boolean hasFlashPedals = false;
         
         private String shootSound;
@@ -293,10 +293,10 @@ AttachmentContainer, Reloadable, Inspectable, Modifiable, Updatable, IModernCraf
             return this;
         }
 
-        public Builder withReloadingTime(long reloadingTime) {
-            this.reloadingTimeout = reloadingTime;
-            return this;
-        }
+//        public Builder withReloadingTime(long reloadingTime) {
+//            this.reloadingTime = reloadingTime;
+//            return this;
+//        }
 
         public Builder withUnloadingTime(long unloadingTime) {
             this.unloadingTimeout = unloadingTime;
@@ -332,7 +332,10 @@ AttachmentContainer, Reloadable, Inspectable, Modifiable, Updatable, IModernCraf
             this.recoil = recoil;
             return this;
         }
-
+        public Builder withReloadingTime(float reloadTime) {
+            this.reloadTime = reloadTime;
+            return this;
+        }
         
         public Builder withZoom(float zoom) {
             this.zoom = zoom;
@@ -1615,6 +1618,7 @@ AttachmentContainer, Reloadable, Inspectable, Modifiable, Updatable, IModernCraf
         case GRIP:
             handler = (a, i) -> {
                 i.setRecoil(builder.recoil);
+                i.setReloadTime(builder.reloadTime);
             };
             break;
         default:
@@ -1630,7 +1634,9 @@ AttachmentContainer, Reloadable, Inspectable, Modifiable, Updatable, IModernCraf
     public float getRecoil() {
         return builder.recoil;
     }
-
+    public float getReloadTime() {
+        return builder.reloadTime;
+    }
     public ModContext getModContext() {
         return modContext;
     }

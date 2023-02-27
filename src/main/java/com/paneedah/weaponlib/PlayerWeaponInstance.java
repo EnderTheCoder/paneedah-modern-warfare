@@ -76,6 +76,7 @@ public class PlayerWeaponInstance extends PlayerItemInstance<WeaponState> implem
 
 	private int ammo;
 	private float recoil;
+	private float reloadTime;
 	private int seriesShotCount;
 	private long lastFireTimestamp;
 	private boolean aimed;
@@ -345,6 +346,14 @@ public class PlayerWeaponInstance extends PlayerItemInstance<WeaponState> implem
 	public void setRecoil(float recoil) {
 		if(recoil != this.recoil) {
 			this.recoil = recoil;
+			markDirty();
+		}
+	}
+	public float getReloadTime() {return reloadTime;}
+
+	public void setReloadTime(float reloadTime) {
+		if(reloadTime != this.reloadTime) {
+			this.reloadTime = reloadTime;
 			markDirty();
 		}
 	}
